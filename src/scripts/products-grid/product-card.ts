@@ -29,4 +29,4 @@ class BestSellerCard extends HTMLElement {
   }
 }
 
-customElements.define("best-seller-card", BestSellerCard);
+customElements.define("product-card", BestSellerCard);
