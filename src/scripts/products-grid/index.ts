@@ -19,9 +19,9 @@ class ProductsGrid extends HTMLElement {
           </p>
         </div>
         <div id="switcher" class="flex justify-center gap-3">
-          <button title="best-sellers" class="font-bold italic transition-all duration-300 lg:text-lg">Best Sellers</button> 
-          <button title="trending-prods" class="font-semibold transition-all duration-300 lg:text-lg">Trending</button> 
-          <button title="new-arrivals" class="font-semibold transition-all duration-300 lg:text-lg">New Arrivals</button> 
+          <button title="best-sellers" class="text-lime-900 font-bold transition-all duration-300 lg:text-lg cursor-pointer">Best Sellers</button> 
+          <button title="trending-prods" class="font-semibold transition-all duration-300 lg:text-lg cursor-pointer">Trending</button> 
+          <button title="new-arrivals" class="font-semibold transition-all duration-300 lg:text-lg cursor-pointer">New Arrivals</button> 
         </div>
         <div id="container">
           <best-sellers></best-sellers>
@@ -48,7 +48,7 @@ class ProductsGrid extends HTMLElement {
       sb.addEventListener("click", () => {
         switcherButtons.forEach((s) => {
           s.classList.remove("font-bold");
-          s.classList.remove("italic");
+          s.classList.remove("text-lime-900");
           s.classList.add("font-semibold");
         });
         const title = sb.getAttribute("title") ?? "";
@@ -57,7 +57,7 @@ class ProductsGrid extends HTMLElement {
           requestAnimationFrame(() => {
             sb.classList.remove("font-semibold");
             sb.classList.add("font-bold");
-            sb.classList.add("italic");
+            sb.classList.add("text-lime-900");
             gridContainer
               .querySelector("div")!
               .classList.remove("-translate-x-20", "opacity-0");

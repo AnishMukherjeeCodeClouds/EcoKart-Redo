@@ -1,7 +1,7 @@
 class Footer extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-        <footer>
+        <footer class="shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
             <div
             class="p-4 py-6 space-y-4 flex flex-col md:flex-row md:justify-between lg:justify-around md:p-10"
             >
@@ -59,7 +59,7 @@ class Footer extends HTMLElement {
             </div>
             </div>
             <div
-            class="border-t border-gray-400 text-gray-800 py-4 text-center md:py-5"
+            class="border-t border-gray-400 py-4 text-center md:py-5 bg-stone-900 text-white"
             >
             ECOKART &copy; 2025, ALL RIGHTS RESERVED
             </div>

@@ -4,7 +4,9 @@ class BigNav extends HTMLElement {
         <nav
           class="flex justify-between items-center px-5 py-3 border-b border-b-gray-500 fixed top-0 left-0 w-full z-10 bg-white/80 backdrop-blur-lg"
         >
-          <eco-icon class="size-10"></eco-icon>
+          <a href="/index.html">
+            <eco-icon class="size-10"></eco-icon>
+          </a>
           <div class="hidden xl:flex lg:gap-4 lg:grow justify-end pr-40">
             <a class="nav-link text-xl cursor-pointer">Home</a>
             <a href="#categories" class="nav-link text-xl cursor-pointer">Categories</a>
@@ -18,17 +20,20 @@ class BigNav extends HTMLElement {
               placeholder="Search products"
               class="scale-x-0 origin-right transition-all duration-500 py-0.5 px-5 rounded-full bg-gray-200 focus:bg-gray-100 outline-none border-2 border-gray-700 placeholder:italic placeholder:text-lg text-lg"
             />
-            <button id="md-search">
+            <button id="md-search" class="cursor-pointer">
               <i id="md-search-search" data-lucide="search" class="size-6"></i>
               <i id="md-search-x" data-lucide="x" class="hidden size-6"></i>
             </button>
-            <button>
+            <button class="cursor-pointer">
+              <i data-lucide="user" class="size-6"></i>
+            </button>
+            <button class="cursor-pointer">
               <i data-lucide="shopping-cart" class="size-6"></i>
             </button>
-            <button>
+            <button class="cursor-pointer">
               <i data-lucide="heart" class="size-6"></i>
             </button>
-            <button class="xl:hidden" id="sidebar-open">
+            <button class="xl:hidden cursor-pointer" id="sidebar-open">
               <i data-lucide="menu" class="size-6"></i>
             </button>
           </div>

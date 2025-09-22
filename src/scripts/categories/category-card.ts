@@ -5,7 +5,7 @@ class CategoryCard extends HTMLElement {
 
     this.innerHTML = `
         <div
-          class="h-[175px] min-w-[175px] md:h-[190px] md:min-w-[190px] lg:h-[200px] lg:min-w-[200px] rounded-lg relative flex items-end group overflow-hidden shadow-md shadow-black"
+          class="h-[175px] min-w-[175px] md:h-[190px] md:min-w-[190px] lg:h-[200px] lg:min-w-[200px] rounded-lg relative flex items-end group overflow-hidden shadow-md shadow-black cursor-pointer"
         >
           <img
             class="absolute h-full w-full object-cover rounded-lg shadow-md shadow-black group-hover:scale-[1.08] transition-all duration-300"

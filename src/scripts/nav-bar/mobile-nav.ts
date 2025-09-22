@@ -7,6 +7,9 @@ class MobileNav extends HTMLElement {
         <eco-icon class="size-8"></eco-icon>
         <div class="flex gap-3">
           <button>
+            <i data-lucide="user" class="size-6"></i>
+          </button>
+          <button>
             <i data-lucide="shopping-cart" class="size-6"></i>
           </button>
           <button>
