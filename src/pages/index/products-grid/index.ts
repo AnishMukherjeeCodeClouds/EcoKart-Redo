@@ -19,9 +19,9 @@ class ProductsGrid extends HTMLElement {
           </p>
         </div>
         <div id="switcher" class="flex justify-center gap-3">
-          <button title="best-sellers" class="text-lime-900 font-bold transition-all duration-300 lg:text-lg cursor-pointer">Best Sellers</button> 
-          <button title="trending-prods" class="font-semibold transition-all duration-300 lg:text-lg cursor-pointer">Trending</button> 
-          <button title="new-arrivals" class="font-semibold transition-all duration-300 lg:text-lg cursor-pointer">New Arrivals</button> 
+          <button title="best-sellers" class="text-lime-900 font-bold transition-all duration-300 lg:text-lg cursor-pointer hover:underline">Best Sellers</button> 
+          <button title="trending-prods" class="font-semibold transition-all duration-300 lg:text-lg cursor-pointer hover:underline">Trending</button> 
+          <button title="new-arrivals" class="font-semibold transition-all duration-300 lg:text-lg cursor-pointer hover:underline">New Arrivals</button> 
         </div>
         <div id="container">
           <best-sellers></best-sellers>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles/product.css" />
+    <title>EcoKart</title>
+  </head>
+  <body>
+    <header class="w-full z-50 sticky top-0 bg-white">
+      <nav-bar></nav-bar>
+    </header>
+    <main>
+      <section
+        class="grid grid-cols-1 md:grid-cols-2 justify-items-center py-10 gap-4"
+      >
+        <div
+          class="w-[310px] h-[350px] px-3 md:px-1 lg:w-[500px] lg:h-[400px] rounded-md lg:justify-self-end"
+        >
+          <product-image></product-image>
+        </div>
+        <prod-info class="place-self-center"></prod-info>
+        <div class="w-full space-y-2 md:col-span-2">
+          <prod-description></prod-description>
+          <more-products></more-products>
+        </div>
+      </section>
+      <footer-section></footer-section>
+    </main>
+    <script type="module" src="/src/pages/product/main.ts"></script>
+  </body>
+</html>

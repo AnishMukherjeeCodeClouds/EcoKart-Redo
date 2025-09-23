@@ -1,17 +1,27 @@
+import { db } from "../../db";
+
 class MobileNav extends HTMLElement {
-  connectedCallback() {
+  async connectedCallback() {
     this.innerHTML = `
       <nav
         class="flex justify-between items-center px-3 py-2 border-b border-b-gray-500"
       >
-        <eco-icon class="size-8"></eco-icon>
+        <a href="/index.html#hero">
+          <eco-icon class="size-8"></eco-icon>
+        </a>
         <div class="flex gap-3">
           <button>
             <i data-lucide="user" class="size-6"></i>
           </button>
-          <button>
+          <a href="/cart.html" class="cursor-pointer relative">
             <i data-lucide="shopping-cart" class="size-6"></i>
-          </button>
+            <span
+              id="cart-counter"
+              class="bg-green-800 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] absolute -top-2 -right-2 font-mono"
+            >
+              1
+            </span>
+          </a>
           <button>
             <i data-lucide="heart" class="size-6"></i>
           </button>
@@ -29,6 +39,16 @@ class MobileNav extends HTMLElement {
         this.dispatchEvent(new CustomEvent("sidebar-open", { bubbles: true }));
       }
     );
+
+    const cartCounter =
+      this.querySelector<HTMLParagraphElement>("#cart-counter")!;
+
+    cartCounter.innerHTML = `${await db.cart.count()}`;
+
+    document.addEventListener("refresh-cart-counter", async () => {
+      console.log("howdy");
+      cartCounter.innerHTML = `${await db.cart.count()}`;
+    });
   }
 }
 

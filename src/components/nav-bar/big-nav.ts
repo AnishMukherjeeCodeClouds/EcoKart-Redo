@@ -1,19 +1,21 @@
+import { db } from "../../db";
+
 class BigNav extends HTMLElement {
-  connectedCallback() {
+  async connectedCallback() {
     this.innerHTML = `
         <nav
-          class="flex justify-between items-center px-5 py-3 border-b border-b-gray-500 fixed top-0 left-0 w-full z-10 bg-white/80 backdrop-blur-lg"
+          class="flex justify-between items-center px-5 py-3 border-b border-b-gray-500 sticky top-0 left-0 w-full z-10 bg-white/80 backdrop-blur-lg"
         >
-          <a href="/index.html">
+          <a href="/index.html#hero">
             <eco-icon class="size-10"></eco-icon>
           </a>
           <div class="hidden xl:flex lg:gap-4 lg:grow justify-end pr-40">
-            <a class="nav-link text-xl cursor-pointer">Home</a>
-            <a href="#categories" class="nav-link text-xl cursor-pointer">Categories</a>
+            <a href="/index.html#hero" class="nav-link text-xl cursor-pointer">Home</a>
+            <a href="/index.html#categories" class="nav-link text-xl cursor-pointer">Categories</a>
             <a class="nav-link text-xl cursor-pointer">About</a>
             <a class="nav-link text-xl cursor-pointer">Contact</a>
           </div>
-          <div class="flex gap-4">
+          <div class="flex items-center gap-4">
             <input
               id="search"
               type="text"
@@ -27,9 +29,15 @@ class BigNav extends HTMLElement {
             <button class="cursor-pointer">
               <i data-lucide="user" class="size-6"></i>
             </button>
-            <button class="cursor-pointer">
+            <a href="/cart.html" class="cursor-pointer relative">
               <i data-lucide="shopping-cart" class="size-6"></i>
-            </button>
+              <span
+                id="cart-counter"
+                class="bg-green-800 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] absolute -top-2 -right-2 font-mono"
+              >
+                1
+              </span>
+            </a>
             <button class="cursor-pointer">
               <i data-lucide="heart" class="size-6"></i>
             </button>
@@ -61,6 +69,15 @@ class BigNav extends HTMLElement {
         this.dispatchEvent(new CustomEvent("sidebar-open", { bubbles: true }));
       }
     );
+
+    const cartCounter =
+      this.querySelector<HTMLParagraphElement>("#cart-counter")!;
+
+    cartCounter.innerHTML = `${await db.cart.count()}`;
+
+    document.addEventListener("refresh-cart-counter", async () => {
+      cartCounter.innerHTML = `${await db.cart.count()}`;
+    });
   }
 }
 

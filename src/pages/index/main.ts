@@ -1,9 +1,9 @@
+import "../../components/eco-icon";
+import "../../components/footer";
+import "../../components/nav-bar";
 import "./categories";
 import "./dotd";
-import "./eco-icon";
-import "./footer";
 import "./hero";
-import "./nav-bar";
 import "./newsletter";
 import "./products-grid";
 import "./testimonials";

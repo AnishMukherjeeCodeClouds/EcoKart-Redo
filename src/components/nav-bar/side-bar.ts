@@ -27,8 +27,8 @@ class SideBar extends HTMLElement {
           <i data-lucide="x" class="size-7"></i>
         </button>
         <div class="flex flex-col">
-        <a class="text-start py-3 px-2 text-xl md:text-2xl">Home</a>
-        <a href="#categories" class="text-start py-3 px-2 text-xl md:text-2xl">Categories</a>
+        <a href="/index.html#hero" class="text-start py-3 px-2 text-xl md:text-2xl">Home</a>
+        <a href="/index.html#categories" class="text-start py-3 px-2 text-xl md:text-2xl">Categories</a>
         <a class="text-start py-3 px-2 text-xl md:text-2xl">About us</a>
         <a class="text-start py-3 px-2 text-xl md:text-2xl">Contact us</a>
         </div>

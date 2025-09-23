@@ -1,5 +1,11 @@
+import { db } from "../../db";
+import { products } from "../../products";
+import { getRandomObjects } from "../../utils";
+
 class DOTD extends HTMLElement {
   connectedCallback() {
+    const randomProduct = getRandomObjects(products, 1)[0];
+
     this.innerHTML = `
       <section
         id="deal-of-the-day"
@@ -19,35 +25,41 @@ class DOTD extends HTMLElement {
             🔥 Limited Time Offer
           </span>
         </div>
-        <div
+        <a
+          href="/product.html?id=${randomProduct.id}"
           class="w-[70%] h-[300px] lg:w-[400px] lg:h-[400px] rounded-md relative shadow-md shadow-gray-700 overflow-hidden md:col-start-1 md:row-start-1 md:row-span-2 lg:justify-self-end"
         >
           <img
             class="h-full w-full object-cover rounded-md hover:scale-[1.08] transition-all duration-300"
-            src="/assets/best sellers/steel water bottle.avif"
-            alt="Steel Water Bottle"
+            src="${randomProduct.imgUrl}"
+            alt="${randomProduct.name}"
           />
-        </div>
+        </a>
         <div
           class="flex flex-col items-center gap-4 text-center md:col-start-2 md:row-start-2 lg:justify-self-start"
         >
           <div class="flex flex-col items-center">
             <p class="text-xl md:text-2xl lg:text-3xl font-bold">
-              Steel Water Bottle
+            ${randomProduct.name}
             </p>
-            <p class="text-sm md:text-base lg:text-lg text-gray-900">
-              Durable, reusable, and keeps drinks cold all day
+            <p class="text-sm px-5 md:text-base lg:text-lg lg:w-sm text-gray-900">
+            ${randomProduct.subtitle.split(".")[0]}
             </p>
+
             <div class="flex items-center gap-2">
-              <p class="line-through text-gray-700">₹1200</p>
-              <p class="text-green-700 text-2xl font-extrabold">₹800</p>
+              <p class="line-through text-gray-700">₹${
+                randomProduct.price + 100
+              }</p>
+              <p class="text-green-700 text-2xl font-extrabold">₹${
+                randomProduct.price
+              }</p>
             </div>
             <p class="text-sm text-red-600 font-semibold">
               ⏳ 12h : 30m : 05s left
             </p>
           </div>
           <button
-            class="w-[80%] max-w-xs flex items-center justify-center gap-2 bg-white py-2 px-4 rounded-md shadow-md shadow-gray-700 hover:bg-lime-800 group transition-all duration-300"
+            class="add-to-cart-btn w-[80%] max-w-xs flex items-center justify-center gap-2 bg-white py-2 px-4 rounded-md shadow-md shadow-gray-700 hover:bg-lime-800 group transition-all duration-300 cursor-pointer"
           >
             <p
               class="text-green-800 group-hover:text-white transition-all duration-300 font-semibold"
@@ -62,6 +74,15 @@ class DOTD extends HTMLElement {
         </div>
       </section>
     `;
+
+    const addToCartBtn =
+      this.querySelector<HTMLButtonElement>(".add-to-cart-btn")!;
+    addToCartBtn.addEventListener("click", async () => {
+      await db.cart.add({ productId: randomProduct.id, quantity: 1 });
+      this.dispatchEvent(
+        new CustomEvent("refresh-cart-counter", { bubbles: true })
+      );
+    });
   }
 }
 
