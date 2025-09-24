@@ -7,7 +7,20 @@ class CartItems extends HTMLElement {
 
   async render() {
     if ((await db.cart.count()) === 0) {
-      this.innerHTML = `nothing to see here`;
+      this.innerHTML = `
+          <div
+            class="size-full flex flex-col justify-center max-md:py-40 items-center p-8 space-y-3"
+          >
+            <h2 class="text-3xl lg:text-4xl font-bold">Your Cart Is Empty</h2>
+            <a
+              href="/index.html#hero"
+              class="bg-green-800 text-white lg:text-lg py-2 px-4 rounded-md"
+            >
+              Continue Shopping
+            </a>
+          </div>
+        `;
+      this.classList.add("lg:justify-self-end");
       return;
     }
 
@@ -47,7 +60,7 @@ class CartItems extends HTMLElement {
       <section class="flex flex-col px-5 py-4 md:hidden">
         ${smallItemsString}
       </section>
-      <section class="hidden md:flex flex-col gap-3 px-5 py-4">
+      <section class="hidden md:flex flex-col gap-3 px-5 py-4 ">
         <div class="grid grid-cols-7 place-items-center">
           <p class="col-span-2"></p>
           <p class="font-bold col-span-2">PRODUCT</p>

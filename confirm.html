@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/styles/confirm.css" />
+    <title>EcoKart</title>
+  </head>
+  <body>
+    <header class="w-full z-50 sticky top-0 bg-white">
+      <nav-bar></nav-bar>
+    </header>
+
+    <main class="min-h-dvh flex flex-col">
+      <section class="grow flex flex-col gap-4 py-10">
+        <h1 class="font-bold text-2xl self-center">ORDER CONFIRMATION</h1>
+        <div
+          class="flex flex-col md:flex-row md:justify-center md:items-center"
+        >
+          <billing-details></billing-details>
+          <cart-checkout-summary class="px-[1.625rem]"></cart-checkout-summary>
+        </div>
+      </section>
+      <footer-section></footer-section>
+    </main>
+    <script type="module" src="/src/pages/confirm/main.ts"></script>
+  </body>
+</html>

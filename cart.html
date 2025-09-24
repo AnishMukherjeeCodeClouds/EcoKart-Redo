@@ -16,11 +16,10 @@
     <header class="w-full z-50 sticky top-0 bg-white">
       <nav-bar></nav-bar>
     </header>
-    <main>
-      <div class="grid grid-cols-1 lg:grid-cols-3 lg:px-34 lg:py-10">
-        <cart-items class="lg:col-span-2"></cart-items>
-        <cart-summary></cart-summary>
-      </div>
+    <main class="min-h-dvh flex flex-col">
+      <!-- <section class="grid grid-cols-1 md:grid-cols-2">
+      </section> -->
+      <stepped-cart class="grow"></stepped-cart>
       <footer-section></footer-section>
     </main>
     <script type="module" src="/src/pages/cart/main.ts"></script>

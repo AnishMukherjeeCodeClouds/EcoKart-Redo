@@ -29,8 +29,8 @@ export class BaseCartItem extends HTMLElement {
 
   /** subclasses must override */
   protected renderUI(
-    product: (typeof products)[number],
-    productInDb: CartItem
+    _product: (typeof products)[number],
+    _productInDb: CartItem
   ): string {
     throw new Error("renderUI must be implemented by subclass");
   }

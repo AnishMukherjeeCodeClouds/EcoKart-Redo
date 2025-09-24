@@ -1,20 +1,16 @@
 import { db } from "../../db";
 import { products } from "../../products";
 
-class CartSummary extends HTMLElement {
-  private refreshSummary = () => this.render();
+class CartCheckoutSummary extends HTMLElement {
+  async connectedCallback() {
+    const cartItems = await db.cart.toArray();
+    const cartProducts = cartItems.map((ci) => ({
+      ...ci,
+      details: products.find((p) => p.id === ci.productId)!,
+    }));
 
-  async render() {
-    if ((await db.cart.count()) === 0) {
-      this.classList.add("hidden");
-      this.innerHTML = ``;
-      return;
-    }
-
-    const subtotalCost = (await db.cart.toArray()).reduce(
-      (prev, curr) =>
-        prev +
-        curr.quantity * products.find((p) => p.id === curr.productId)!.price,
+    const subtotalCost = cartProducts.reduce(
+      (prev, curr) => prev + curr.quantity * curr.details.price,
       0
     );
     const shippingCost = subtotalCost * 0.1;
@@ -23,7 +19,23 @@ class CartSummary extends HTMLElement {
     this.innerHTML = `
         <section id="cart-total" class="px-5 py-4">
           <div class="border-[3px] border-gray-200 rounded-md p-6 space-y-2">
-            <p class="text-xl font-bold">CART SUMMARY</p>
+            <p class="text-xl font-bold">ORDER OVERVIEW</p>
+            <p class="font-semibold">Items</p>
+            <div>
+                ${cartProducts
+                  .map(
+                    (cp) => `
+                <div class="flex justify-between">
+                    <p>${cp.details.name} (x${cp.quantity})</p>
+                    <p class="text-gray-600">₹${
+                      cp.quantity * cp.details.price
+                    }</p>
+                </div>
+                        `
+                  )
+                  .join("\n")}
+            </div>
+            <hr class="border-b border-gray-200" />
             <div class="flex justify-between">
               <p class="font-semibold">Subtotal</p>
               <p class="text-gray-600">₹${subtotalCost}</p>
@@ -46,31 +58,10 @@ class CartSummary extends HTMLElement {
                 subtotalCost + shippingCost + taxCost
               }</p>
             </div>
-            <button id="checkout-btn" class="bg-lime-800 text-white py-2 w-full rounded-md mt-2">
-              Checkout
-            </button>
           </div>
         </section>
     `;
-
-    document.addEventListener("refresh-summary", this.refreshSummary);
-
-    const checkoutBtn =
-      document.querySelector<HTMLButtonElement>("#checkout-btn")!;
-    checkoutBtn.addEventListener("click", () => {
-      this.dispatchEvent(
-        new CustomEvent("move-to-checkout", { bubbles: true })
-      );
-    });
-  }
-
-  connectedCallback() {
-    this.render();
-  }
-
-  disconnectedCallback() {
-    document.removeEventListener("refresh-summary", this.refreshSummary);
   }
 }
 
-customElements.define("cart-summary", CartSummary);
+customElements.define("cart-checkout-summary", CartCheckoutSummary);

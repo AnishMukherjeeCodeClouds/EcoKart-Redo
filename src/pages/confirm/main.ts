@@ -1,7 +1,8 @@
+import { createIcons, icons } from "lucide";
 import "../../components/eco-icon";
 import "../../components/footer";
 import "../../components/nav-bar";
-import "./stepped-cart";
+import "../cart/cart-checkout-summary";
+import "./billing-details";
 
-import { createIcons, icons } from "lucide";
 createIcons({ icons });
