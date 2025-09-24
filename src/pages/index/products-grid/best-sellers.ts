@@ -1,8 +1,9 @@
 import { products } from "../../../products";
+import { getRandomObjects } from "../../../utils";
 
 class BestSellers extends HTMLElement {
   connectedCallback() {
-    const productsString = products
+    const productsString = getRandomObjects(products, 12)
       .map(
         (p) => `
           <product-card

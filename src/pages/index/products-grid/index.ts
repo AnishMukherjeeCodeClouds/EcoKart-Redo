@@ -1,5 +1,6 @@
 import { createIcons, icons } from "lucide";
 import "./best-sellers";
+import "./filtered-results";
 import "./new-arrivals";
 import "./product-card";
 import "./trending";
@@ -25,6 +26,7 @@ class ProductsGrid extends HTMLElement {
         </div>
         <div id="container">
           <best-sellers></best-sellers>
+          <filtered-results></filtered-results>
         </div>
       </section>
     `;

@@ -1,9 +1,9 @@
 import { products } from "../../../products";
-import { shuffleArray } from "../../../utils";
+import { getRandomObjects } from "../../../utils";
 
 class NewArrivals extends HTMLElement {
   connectedCallback() {
-    const productsString = shuffleArray(products)
+    const productsString = getRandomObjects(products, 12)
       .map(
         (p) => `
           <product-card

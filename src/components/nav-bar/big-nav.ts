@@ -26,6 +26,9 @@ class BigNav extends HTMLElement {
               <i id="md-search-search" data-lucide="search" class="size-6"></i>
               <i id="md-search-x" data-lucide="x" class="hidden size-6"></i>
             </button>
+            <button id="clear-filters" class="cursor-pointer">
+              <i data-lucide="eraser" class="size-6"></i>
+            </button>
             <button class="cursor-pointer">
               <i data-lucide="user" class="size-6"></i>
             </button>
@@ -77,6 +80,25 @@ class BigNav extends HTMLElement {
 
     document.addEventListener("refresh-cart-counter", async () => {
       cartCounter.innerHTML = `${await db.cart.count()}`;
+    });
+
+    const searchInput = document.querySelector<HTMLInputElement>("#search")!;
+    searchInput.addEventListener("change", () => {
+      location.href = "/index.html#filtered-results";
+      this.dispatchEvent(
+        new CustomEvent("search-filter", {
+          bubbles: true,
+          detail: searchInput.value,
+        })
+      );
+    });
+
+    const clearFiltersBtn =
+      this.querySelector<HTMLButtonElement>("#clear-filters")!;
+    clearFiltersBtn.addEventListener("click", () => {
+      location.href = "/index.html#products";
+      searchInput.value = "";
+      this.dispatchEvent(new CustomEvent("clear-filters", { bubbles: true }));
     });
   }
 }
