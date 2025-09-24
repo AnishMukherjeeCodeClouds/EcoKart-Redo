@@ -11,7 +11,7 @@ class BillingDetails extends HTMLElement {
 
     this.innerHTML = `
           <div
-            class="border-[3px] border-gray-200 p-5 space-y-2 w-xs rounded-md self-center"
+            class="border-[3px] border-gray-200 p-5 space-y-2 rounded-md"
           >
             <h2 class="font-bold text-xl">BILLING DETAILS</h2>
             <div class="flex gap-1">
