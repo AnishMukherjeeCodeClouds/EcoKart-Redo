@@ -26,8 +26,8 @@ class ProductsGrid extends HTMLElement {
         </div>
         <div id="container">
           <best-sellers></best-sellers>
-          <filtered-results></filtered-results>
         </div>
+        <filtered-results></filtered-results>
       </section>
     `;
 

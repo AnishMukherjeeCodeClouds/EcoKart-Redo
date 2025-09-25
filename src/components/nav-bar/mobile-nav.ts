@@ -22,7 +22,7 @@ class MobileNav extends HTMLElement {
               1
             </span>
           </a>
-          <button>
+          <button id="open-wishlist">
             <i data-lucide="heart" class="size-6"></i>
           </button>
           <button id="sidebar-open">
@@ -46,8 +46,13 @@ class MobileNav extends HTMLElement {
     cartCounter.innerHTML = `${await db.cart.count()}`;
 
     document.addEventListener("refresh-cart-counter", async () => {
-      console.log("howdy");
       cartCounter.innerHTML = `${await db.cart.count()}`;
+    });
+
+    const openWishlistBtn =
+      this.querySelector<HTMLButtonElement>("#open-wishlist")!;
+    openWishlistBtn.addEventListener("click", () => {
+      this.dispatchEvent(new CustomEvent("open-wishlist", { bubbles: true }));
     });
   }
 }

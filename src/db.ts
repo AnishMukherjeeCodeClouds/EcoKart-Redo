@@ -5,15 +5,19 @@ export type CartItem = {
   productId: number;
   quantity: number;
 };
-type WishlistItem = {};
+type WishlistItem = {
+  id: number;
+  productId: number;
+};
 
 const db = new Dexie("EcoKartDB") as Dexie & {
   cart: EntityTable<CartItem, "id">;
-  wishlist: EntityTable<WishlistItem>;
+  wishlist: EntityTable<WishlistItem, "id">;
 };
 
 db.version(1).stores({
   cart: "++id, productId, quantity",
+  wishlist: "++id, productId",
 });
 
 export { db };

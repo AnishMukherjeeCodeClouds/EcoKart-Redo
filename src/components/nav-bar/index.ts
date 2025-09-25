@@ -2,6 +2,7 @@ import "./big-nav";
 import "./mobile-nav";
 import "./search-bar";
 import "./side-bar";
+import "./wish-list";
 
 class BigNav extends HTMLElement {
   connectedCallback() {
@@ -13,6 +14,7 @@ class BigNav extends HTMLElement {
         <mobile-nav></mobile-nav>
         <search-bar></search-bar>
       </div>
+      <wish-list></wish-list>
     `;
   }
 }

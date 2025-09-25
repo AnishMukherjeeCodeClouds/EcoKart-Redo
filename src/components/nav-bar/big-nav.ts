@@ -41,7 +41,7 @@ class BigNav extends HTMLElement {
                 1
               </span>
             </a>
-            <button class="cursor-pointer">
+            <button id="open-wishlist" class="cursor-pointer">
               <i data-lucide="heart" class="size-6"></i>
             </button>
             <button class="xl:hidden cursor-pointer" id="sidebar-open">
@@ -99,6 +99,12 @@ class BigNav extends HTMLElement {
       location.href = "/index.html#products";
       searchInput.value = "";
       this.dispatchEvent(new CustomEvent("clear-filters", { bubbles: true }));
+    });
+
+    const openWishlistBtn =
+      this.querySelector<HTMLButtonElement>("#open-wishlist")!;
+    openWishlistBtn.addEventListener("click", () => {
+      this.dispatchEvent(new CustomEvent("open-wishlist", { bubbles: true }));
     });
   }
 }
