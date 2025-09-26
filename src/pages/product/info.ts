@@ -9,7 +9,7 @@ class Info extends HTMLElement {
 
     this.innerHTML = `
         <div
-          class="flex flex-col px-9 gap-3 md:pr-14 lg:pr-64 md:place-self-center"
+          class="flex flex-col gap-3 lg:pr-14"
         >
           <h2 class="text-2xl font-bold text-gray-800">${targetProduct?.name}</h2>
           <p class="text-lime-800 font-semibold text-lg">₹${targetProduct?.price}</p>

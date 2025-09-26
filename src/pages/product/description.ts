@@ -7,7 +7,7 @@ class Description extends HTMLElement {
     const targetProduct = products.find((p) => p.id === id);
 
     this.innerHTML = `
-          <div class="px-9 md:px-12 lg:px-64 space-y-1 lg:space-y-2">
+          <div class="space-y-1 lg:px-14 lg:space-y-2">
             <p class="text-lime-800 font-bold text-lg lg:text-xl">
               Description
             </p>

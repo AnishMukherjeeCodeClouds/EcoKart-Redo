@@ -14,9 +14,9 @@ class Image extends HTMLElement {
   async render() {
     this.innerHTML = `
       <div
-        class="w-[310px] h-[350px] lg:w-[500px] lg:h-[400px] rounded-md lg:justify-self-end relative"
+        class="w-full aspect-square lg:w-[500px] rounded-md lg:justify-self-end relative"
       >
-        <button id="toggle-wishlist-btn" class="absolute top-4 right-4 bg-white rounded-full p-1">
+        <button id="toggle-wishlist-btn" class="absolute top-4 right-4 bg-white rounded-full p-1 cursor-pointer">
           <i data-lucide="heart"></i>
         </button>
         <img
