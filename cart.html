@@ -12,16 +12,14 @@
     <link rel="stylesheet" href="/src/styles/cart.css" />
     <title>EcoKart</title>
   </head>
-  <body>
+  <body class="min-h-dvh flex flex-col overflow-x-hidden">
     <header class="w-full z-50 sticky top-0 bg-white">
       <nav-bar></nav-bar>
     </header>
-    <main class="min-h-dvh flex flex-col">
-      <!-- <section class="grid grid-cols-1 md:grid-cols-2">
-      </section> -->
-      <stepped-cart class="grow"></stepped-cart>
-      <footer-section></footer-section>
+    <main class="grow">
+      <stepped-cart></stepped-cart>
     </main>
+    <footer-section></footer-section>
     <script type="module" src="/src/pages/cart/main.ts"></script>
   </body>
 </html>

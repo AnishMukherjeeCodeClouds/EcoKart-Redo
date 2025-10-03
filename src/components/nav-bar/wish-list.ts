@@ -47,6 +47,7 @@ class WishList extends HTMLElement {
       document.body.classList.add("overflow-y-hidden");
       wishlist.classList.remove("translate-x-full");
       wishlist.classList.add("translate-x-0");
+      wishlistOverlay.classList.remove("hidden");
       wishlistOverlay.classList.remove("translate-x-full");
       wishlistOverlay.classList.add("translate-x-0");
     });
@@ -59,6 +60,7 @@ class WishList extends HTMLElement {
       wishlist.classList.add("translate-x-full");
       wishlistOverlay.classList.remove("translate-x-0");
       wishlistOverlay.classList.add("translate-x-full");
+      wishlistOverlay.classList.add("hidden");
     });
 
     document.addEventListener("refresh-wishlist", this.refreshWishlist);
@@ -77,7 +79,7 @@ class WishList extends HTMLElement {
             <div id="target-container" class="flex flex-col gap-4 grow">
             </div>
         </div>
-        <div id="wishlist-overlay" class="h-screen w-screen inset-0 bg-black/30 absolute z-20 translate-x-full pointer-events-auto transition-all duration-300"></div>
+        <div id="wishlist-overlay" class="h-screen w-screen inset-0 bg-black/30 absolute z-20 translate-x-full pointer-events-auto transition-all duration-300 hidden"></div>
     `;
 
     this.render();
