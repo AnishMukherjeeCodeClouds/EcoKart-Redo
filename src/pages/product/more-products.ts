@@ -1,9 +1,9 @@
 import { products } from "../../products";
-import { getRandomObjects } from "../../utils";
+import { getRandomValues } from "../../utils";
 
 class MoreProducts extends HTMLElement {
   connectedCallback() {
-    const threeProducts = getRandomObjects(products, 3);
+    const threeProducts = getRandomValues(products, 3);
     const productString = threeProducts
       .map(
         (p) => `

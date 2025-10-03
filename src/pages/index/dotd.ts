@@ -1,10 +1,10 @@
 import { db } from "../../db";
 import { products } from "../../products";
-import { getRandomObjects } from "../../utils";
+import { getRandomValues } from "../../utils";
 
 class DOTD extends HTMLElement {
   connectedCallback() {
-    const randomProduct = getRandomObjects(products, 1)[0];
+    const randomProduct = getRandomValues(products, 1)[0];
 
     this.innerHTML = `
       <section
